@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping(path = "/api/v1/Products")
 public class ProductController {
@@ -36,7 +37,7 @@ public class ProductController {
 
     @PostMapping("/insert")
     ResponseEntity<ResponseObject> insertProduct(@RequestBody Product newProduct){
-        List<Product> foundProducts = repository.findByProductName(newProduct.getProductName().trim());
+        List<Product> foundProducts = repository.findByProductName(newProduct.getProductName());
         if(foundProducts.size() > 0){
             return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(
                     new ResponseObject("failed", "product name already taker", "")
@@ -52,7 +53,7 @@ public class ProductController {
         Product updatedProduct = repository.findById(id)
                 .map(product -> {
                     product.setProductName(newProduct.getProductName());
-                    product.setYear(newProduct.getYear());
+                    product.set_year(newProduct.get_year());
                     product.setPrice(newProduct.getPrice());
                     return repository.save(product);
                 }).orElseGet(()-> {

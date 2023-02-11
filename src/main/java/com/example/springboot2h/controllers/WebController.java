@@ -13,7 +13,16 @@ public class WebController {
     @Autowired
     private ProductRepository repository;
     @GetMapping("/") // Nếu người dùng request tới địa chỉ "/"
-    List<Product> getAllProducts() {
-        return repository.findAll();
+    String index(){
+        return "index.html";
+    }
+    @GetMapping("/ddd") // Nếu người dùng request tới địa chỉ "/"
+    String ddd(){
+        return "login.html";
+    }
+
+    @GetMapping("/dđ") // Nếu người dùng request tới địa chỉ "/"
+    String xxx(){
+        return "index.html";
     }
 }
