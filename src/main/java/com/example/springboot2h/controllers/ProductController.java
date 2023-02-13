@@ -46,7 +46,7 @@ public class ProductController {
 
     }
 
-    @PostMapping("/insert")
+    @PostMapping("")
     ResponseEntity<ResponseObject> insertProduct(@RequestBody Product newProduct){
         List<Product> foundProducts = repository.findByProductName(newProduct.getProductName());
         if(foundProducts.size() > 0){

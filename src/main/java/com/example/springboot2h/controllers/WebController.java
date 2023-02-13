@@ -13,7 +13,7 @@ public class WebController {
     @Autowired
     private ProductRepository repository;
     @GetMapping("/") // Nếu người dùng request tới địa chỉ "/"
-    String dasfda(){
+    String index(){
         return "index.html";
     }
     @GetMapping("/ddd") // Nếu người dùng request tới địa chỉ "/"
