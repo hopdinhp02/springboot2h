@@ -40,9 +40,9 @@ function loadProduct() {
 // }
 
 function addProduct() {
-    url = "http://localhost:8080/api/v1/Products/insert";
+    url = "http://localhost:8080/api/v1/Products";
     productName = document.getElementById("productName").value;
-    jsonData = { productName: productName };
+    jsonData = { "productName": productName };
     fetch(url,
         {
             method: "POST",

@@ -16,13 +16,4 @@ public class WebController {
     String index(){
         return "index.html";
     }
-    @GetMapping("/ddd") // Nếu người dùng request tới địa chỉ "/"
-    String ddd(){
-        return "login.html";
-    }
-
-    @GetMapping("/dđ") // Nếu người dùng request tới địa chỉ "/"
-    String xxx(){
-        return "index.html";
-    }
 }
