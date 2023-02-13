@@ -11,8 +11,8 @@ function loadProduct() {
     let url = "http://localhost:8080/api/v1/Products";
     fetch(url)
         .then(response => response.json())
-        .then(data => {
-            data.forEach(element => {
+        .then(jsonData => {
+            jsonData.data.forEach(element => {
                 var option = document.createElement("option");
                 option.text = element.productName;
                 option.value = element.id;
