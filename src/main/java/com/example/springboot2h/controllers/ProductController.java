@@ -20,10 +20,21 @@ public class ProductController {
     private ProductRepository repository;
 
     @GetMapping("")
-    List<Product> getAllProducts() {
-        return repository.findAll();
-    }
+//    List<Product> getAllProducts() {
+//        return repository.findAll();
+//    }
+    ResponseEntity<ResponseObject> getAllProducts() {
+        List<Product> foundProducts = repository.findAll();
+        if(foundProducts.size() == 0){
+            return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(
+                    new ResponseObject("failed", "no products in database", "")
+            );
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(
+                new ResponseObject("OK", "Query all products successfull", foundProducts)
+        );
 
+    }
     @GetMapping("/{id}")
     ResponseEntity<ResponseObject> findById(@PathVariable Long id) {
         Optional<Product> foundProduct = repository.findById(id);
